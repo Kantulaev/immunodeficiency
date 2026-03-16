@@ -26,7 +26,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-navy-900/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+          ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -35,44 +35,44 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-cyan-400/20 rounded-lg blur-md group-hover:bg-cyan-400/30 transition-colors" />
-              <Shield className="relative w-8 h-8 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
+              <div className="absolute inset-0 bg-blue-500/20 rounded-lg blur-md group-hover:bg-blue-500/30 transition-colors" />
+              <Shield className="relative w-8 h-8 text-blue-600 group-hover:text-cyan-500 transition-colors" />
             </div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-white">Immuno</span>
-              <span className="text-cyan-400">Global</span>
+            <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-950 transition-colors">
+              Immuno<span className="text-blue-600">Global</span>
             </span>
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors group"
+                className="relative px-4 py-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-medical-500 group-hover:w-3/4 transition-all duration-300" />
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
               </a>
             ))}
           </div>
 
           {/* CTA */}
           <div className="hidden md:block">
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#course"
-              className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-medical-600 rounded-full hover:from-cyan-400 hover:to-medical-500 transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-105"
+              className="relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full hover:from-blue-500 hover:to-cyan-400 transition-all duration-300 shadow-lg shadow-blue-500/30"
             >
               Start Learning
-              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-medical-500 opacity-0 hover:opacity-20 blur-xl transition-opacity" />
-            </a>
+            </motion.a>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -88,7 +88,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-navy-800/95 backdrop-blur-xl border-t border-white/5"
+            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100"
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
@@ -96,7 +96,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-xl transition-colors"
                 >
                   {link.label}
                 </a>
@@ -104,7 +104,7 @@ export default function Navbar() {
               <a
                 href="#course"
                 onClick={() => setMobileOpen(false)}
-                className="block mt-3 px-4 py-3 text-sm font-semibold text-center text-white bg-gradient-to-r from-cyan-500 to-medical-600 rounded-lg"
+                className="block mt-4 px-4 py-3 text-sm font-bold text-center text-white bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl shadow-md"
               >
                 Start Learning
               </a>

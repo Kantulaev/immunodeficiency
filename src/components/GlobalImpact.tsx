@@ -21,16 +21,17 @@ function StatCard({ icon: Icon, target, suffix, label, description, delay }: Sta
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay }}
-      className="relative text-center group"
+      whileHover={{ y: -8 }}
+      className="relative text-center group bg-white p-8 rounded-[2rem] border border-slate-100 card-shadow hover:shadow-2xl transition-all duration-300"
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/10 mb-6 group-hover:bg-cyan-500/20 group-hover:border-cyan-500/20 transition-all duration-300">
-        <Icon className="w-7 h-7 text-cyan-400" />
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 ring-4 ring-slate-50">
+        <Icon className="w-8 h-8" />
       </div>
-      <div className="text-4xl sm:text-5xl font-extrabold text-white mb-2 tabular-nums">
+      <div className="text-4xl sm:text-5xl font-black text-slate-900 mb-3 tabular-nums tracking-tight">
         {display}
       </div>
-      <div className="text-base font-semibold text-slate-200 mb-1">{label}</div>
-      <p className="text-sm text-slate-500 max-w-[220px] mx-auto">{description}</p>
+      <div className="text-base font-bold text-blue-700 mb-2 uppercase tracking-wide">{label}</div>
+      <p className="text-slate-500 font-medium max-w-[220px] mx-auto">{description}</p>
     </motion.div>
   );
 }
@@ -49,7 +50,7 @@ const stats = [
     target: 10000,
     suffix: "+",
     label: "Professionals",
-    description: "Physicians, researchers, and students advancing their expertise.",
+    description: "Physicians, researchers, and students advancing expertise.",
     delay: 0.15,
   },
   {
@@ -72,11 +73,10 @@ const stats = [
 
 export default function GlobalImpact() {
   return (
-    <section id="impact" className="relative py-24 sm:py-32 bg-navy-900 overflow-hidden">
+    <section id="impact" className="relative py-24 sm:py-32 bg-slate-50 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/[0.02] rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-400/[0.03] rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,16 +86,16 @@ export default function GlobalImpact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-1 text-xs font-semibold tracking-wider uppercase text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
+          <span className="inline-block px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-blue-700 bg-blue-100/50 border border-blue-200 rounded-full mb-6">
             Global Reach
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight">
             Making an{" "}
             <span className="gradient-text">Impact Worldwide</span>
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-slate-400 text-lg">
+          <p className="mt-6 max-w-2xl mx-auto text-slate-600 text-lg sm:text-xl font-medium">
             Our mission is to democratize immunodeficiency education, empowering
             healthcare professionals across every region to deliver exceptional
             patient care.
@@ -103,7 +103,7 @@ export default function GlobalImpact() {
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat) => (
             <StatCard key={stat.label} {...stat} />
           ))}
@@ -115,12 +115,12 @@ export default function GlobalImpact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 pt-8 border-t border-white/5 text-center"
+          className="mt-24 pt-10 border-t border-slate-200 text-center"
         >
-          <p className="text-xs text-slate-500 uppercase tracking-widest mb-6 font-medium">
+          <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">
             Trusted by leading institutions worldwide
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
             {[
               "Johns Hopkins",
               "Karolinska Institute",
@@ -130,7 +130,7 @@ export default function GlobalImpact() {
             ].map((name) => (
               <span
                 key={name}
-                className="text-sm font-semibold text-slate-600 hover:text-slate-400 transition-colors cursor-default tracking-wide"
+                className="text-lg sm:text-xl font-black text-slate-300 hover:text-blue-500 transition-colors cursor-default tracking-wide"
               >
                 {name}
               </span>

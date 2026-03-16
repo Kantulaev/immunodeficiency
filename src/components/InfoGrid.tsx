@@ -11,8 +11,8 @@ import {
 const cards = [
   {
     icon: ShieldAlert,
-    iconColor: "text-rose-400",
-    iconBg: "bg-rose-500/10",
+    iconColor: "text-blue-600",
+    iconBg: "bg-blue-100/80",
     title: "Primary Immunodeficiencies (PID)",
     description:
       "Inherited genetic disorders affecting the immune system's development or function. Over 450 distinct forms have been identified, ranging from severe combined immunodeficiency (SCID) to selective antibody deficiencies.",
@@ -20,8 +20,8 @@ const cards = [
   },
   {
     icon: ShieldCheck,
-    iconColor: "text-amber-400",
-    iconBg: "bg-amber-500/10",
+    iconColor: "text-cyan-600",
+    iconBg: "bg-cyan-100/80",
     title: "Secondary Immunodeficiencies (SID)",
     description:
       "Acquired conditions resulting from external factors such as infections (HIV/AIDS), malnutrition, medications, or environmental exposures. SID represents the most common form of immunodeficiency globally.",
@@ -29,8 +29,8 @@ const cards = [
   },
   {
     icon: Dna,
-    iconColor: "text-cyan-400",
-    iconBg: "bg-cyan-500/10",
+    iconColor: "text-indigo-600",
+    iconBg: "bg-indigo-100/80",
     title: "Genetic Mechanisms",
     description:
       "Modern genomics has revolutionized our understanding of immunodeficiency. Next-generation sequencing enables rapid identification of pathogenic variants across hundreds of immune-related genes.",
@@ -38,8 +38,8 @@ const cards = [
   },
   {
     icon: Microscope,
-    iconColor: "text-violet-400",
-    iconBg: "bg-violet-500/10",
+    iconColor: "text-violet-600",
+    iconBg: "bg-violet-100/80",
     title: "Diagnostic Advances",
     description:
       "From flow cytometry to functional assays, modern diagnostics enable precise immunophenotyping. Early diagnosis dramatically improves outcomes through timely intervention and targeted therapies.",
@@ -47,8 +47,8 @@ const cards = [
   },
   {
     icon: Syringe,
-    iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600",
+    iconBg: "bg-emerald-100/80",
     title: "Treatment Modalities",
     description:
       "Therapeutic options range from immunoglobulin replacement therapy and prophylactic antibiotics to hematopoietic stem cell transplantation and emerging gene therapy approaches.",
@@ -56,8 +56,8 @@ const cards = [
   },
   {
     icon: HeartPulse,
-    iconColor: "text-pink-400",
-    iconBg: "bg-pink-500/10",
+    iconColor: "text-rose-600",
+    iconBg: "bg-rose-100/80",
     title: "Patient Care & Quality of Life",
     description:
       "Comprehensive management extends beyond treatment to include psychological support, infection prevention strategies, and long-term monitoring to ensure optimal quality of life for patients.",
@@ -69,13 +69,13 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
@@ -85,10 +85,7 @@ const cardVariants = {
 
 export default function InfoGrid() {
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-navy-900">
-      {/* Subtle top border glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
-
+    <section id="about" className="relative py-24 sm:py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
@@ -96,16 +93,16 @@ export default function InfoGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-1 text-xs font-semibold tracking-wider uppercase text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
+          <span className="inline-block px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-blue-700 bg-blue-100/50 border border-blue-200 rounded-full mb-6">
             Knowledge Foundation
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight">
             Understanding the{" "}
             <span className="gradient-text">Immune Landscape</span>
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-slate-400 text-lg">
+          <p className="mt-6 max-w-2xl mx-auto text-slate-600 text-lg sm:text-xl font-medium">
             Explore the fundamental concepts behind primary and secondary
             immunodeficiencies and the cutting-edge science driving modern care.
           </p>
@@ -117,40 +114,41 @@ export default function InfoGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {cards.map((card) => (
             <motion.div
               key={card.title}
               variants={cardVariants}
               whileHover={{
-                y: -8,
-                transition: { duration: 0.25 },
+                scale: 1.03,
+                y: -5,
+                transition: { duration: 0.3, ease: "easeOut" },
               }}
-              className="group relative p-6 bg-navy-800/50 border border-white/5 rounded-2xl hover:border-cyan-500/20 hover:bg-navy-700/50 transition-colors duration-300 cursor-default"
+              className="group relative p-8 bg-white border border-slate-100 rounded-[2rem] card-shadow hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
             >
-              {/* Top glow on hover */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/0 to-transparent group-hover:via-cyan-500/40 transition-all duration-500" />
+              {/* Subtle accent gradient top border */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-100 via-cyan-100 to-transparent rounded-t-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div
-                className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${card.iconBg} mb-5`}
+                className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${card.iconBg} mb-6 ring-4 ring-white shadow-sm`}
               >
-                <card.icon className={`w-6 h-6 ${card.iconColor}`} />
+                <card.icon className={`w-7 h-7 flex-shrink-0 ${card.iconColor}`} />
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-cyan-100 transition-colors">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-700 transition-colors">
                 {card.title}
               </h3>
 
-              <p className="text-sm text-slate-400 leading-relaxed mb-4">
+              <p className="text-slate-600 leading-relaxed font-medium flex-grow mb-6">
                 {card.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {card.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-0.5 text-[11px] font-medium text-slate-400 bg-white/5 rounded-full border border-white/5"
+                    className="px-3 py-1 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors"
                   >
                     {tag}
                   </span>

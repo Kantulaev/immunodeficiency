@@ -24,35 +24,38 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer id="footer" className="relative bg-navy-900 border-t border-white/5">
-      {/* Top glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+    <footer id="footer" className="relative bg-slate-950 pt-20 pb-10">
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <a href="#" className="inline-flex items-center gap-2.5 mb-4">
-              <Shield className="w-7 h-7 text-cyan-400" />
-              <span className="text-lg font-bold">
+            <a href="#" className="inline-flex items-center gap-2.5 mb-6 group">
+              <Shield className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
+              <span className="text-2xl font-black tracking-tight">
                 <span className="text-white">Immuno</span>
                 <span className="text-cyan-400">Global</span>
               </span>
             </a>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-6">
+            <p className="text-slate-400 leading-relaxed max-w-sm mb-8 font-medium">
               Empowering healthcare professionals worldwide with comprehensive
               education on immunodeficiency disorders. Building bridges between
               research and clinical practice.
             </p>
-            <div className="flex items-center gap-3 text-sm text-slate-500">
-              <MapPin className="w-4 h-4 text-cyan-500/50" />
+            <div className="flex items-center gap-3 text-slate-300 font-medium mb-3">
+              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                <MapPin className="w-4 h-4 text-cyan-400" />
+              </div>
               <span>Geneva, Switzerland</span>
             </div>
-            <div className="flex items-center gap-3 text-sm text-slate-500 mt-2">
-              <Mail className="w-4 h-4 text-cyan-500/50" />
+            <div className="flex items-center gap-3 text-slate-300 font-medium">
+              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                <Mail className="w-4 h-4 text-cyan-400" />
+              </div>
               <a
                 href="mailto:info@immunoglobal.org"
-                className="hover:text-cyan-400 transition-colors"
+                className="hover:text-white transition-colors"
               >
                 info@immunoglobal.org
               </a>
@@ -62,19 +65,19 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
+              <h4 className="text-base font-bold text-white mb-6 tracking-wide">
                 {title}
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="inline-flex items-center gap-1 text-sm text-slate-400 hover:text-cyan-400 transition-colors group"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors group"
                     >
                       {link.label}
                       {link.href === "#" && (
-                        <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity" />
+                        <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                       )}
                     </a>
                   </li>
@@ -85,17 +88,17 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 pt-8 border-t border-white/5">
+        <div className="pt-8 border-t border-slate-800">
           {/* Medical disclaimer */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-6 p-4 bg-amber-500/5 border border-amber-500/10 rounded-xl"
+            className="mb-8 p-6 bg-slate-900 border border-slate-800 rounded-2xl"
           >
-            <p className="text-xs text-amber-200/60 leading-relaxed">
-              <span className="font-semibold text-amber-300/70">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-medium">
+              <span className="font-bold text-white">
                 Medical Disclaimer:
               </span>{" "}
               The content on this website is intended for educational purposes
@@ -107,29 +110,18 @@ export default function Footer() {
           </motion.div>
 
           {/* Bottom bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-medium text-slate-500">
             <p>
               © {new Date().getFullYear()} ImmunoGlobal. All rights reserved.
             </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="hover:text-slate-300 transition-colors"
-              >
+            <div className="flex items-center gap-6">
+              <a href="#" className="hover:text-white transition-colors">
                 Terms of Service
               </a>
-              <span className="w-1 h-1 rounded-full bg-slate-700" />
-              <a
-                href="#"
-                className="hover:text-slate-300 transition-colors"
-              >
+              <a href="#" className="hover:text-white transition-colors">
                 Privacy Policy
               </a>
-              <span className="w-1 h-1 rounded-full bg-slate-700" />
-              <a
-                href="#"
-                className="hover:text-slate-300 transition-colors"
-              >
+              <a href="#" className="hover:text-white transition-colors">
                 Cookie Settings
               </a>
             </div>
